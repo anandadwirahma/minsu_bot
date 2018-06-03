@@ -1,5 +1,88 @@
 + [*] [@halo] [*]
-- Haloo aku Milki , teman sehat kamu :) \n
-^ Kamu udah minum susu belum hari ini ? Hari gini gk minum susu , gak uuuuuuuuuuuuuuu . . . \n
-^ Niih milki punya varian susu sapi segar yang cocok banget buat kamu loh. \n
-^ gue kasih lihat lihat dulu deh atau langsung cobain kalo gk percaya.
+- mnMilki Haloo aku Milki , teman sehat kamu :) \n
+^ Kamu udah minum susu belum hari ini ? Hari gini gk minum susu , gak uuuu.. {topic=order}
+
+> topic order
+    + order
+    - mnOrder
+
+    + katalog
+    - mnKatalog
+
+    + beli
+    - mnBuy
+
+    + belisuccess
+    - mnBuySuccess {topic=locationorder}
+
+    + cancelorder
+    - ordCancel Baik kaak , pesanan kita cancel ya..{topic=random}
+
+    + [*] cancel [*]
+    - ordCancel Baik kak kita cancel ya, \n
+    ^ Kalau pengen pesan minsu jangan malau-malu hubungin milki ya..{topic=random}
+
+    + (*)
+    - Mohon selesaikan proses ordernya ya kak.
+    ^ Untuk batal ketik cancel ya..
+< topic
+
+> topic locationorder
+    + location
+    - uLoc {topic=picorder}
+
+    + [*] cancel [*]
+    - ordCancel Baik kak kita cancel ya, \n
+    ^ Kalau pengen pesan minsu jangan malau-malu hubungin milki ya..{topic=random}
+
+    + (*)
+    - Share loc aja ya kak..
+< topic
+
+> topic picorder
+    + *
+    - nmPic {topic=emailorder}
+
+    + [*] cancel [*]
+    - ordCancel Baik kak kita cancel ya, \n
+    ^ Kalau pengen pesan minsu jangan malau-malu hubungin milki ya..{topic=random}
+< topic
+
+> topic emailorder
+    + email
+    - uMail {topic=phoneorder}
+
+    + [*] cancel [*]
+    - ordCancel Baik kak kita cancel ya, \n
+    ^ Kalau pengen pesan minsu jangan malau-malu hubungin milki ya..{topic=random}
+
+    + (*)
+    - Coba cek lagi ya kak emailnya..
+< topic
+
+> topic phoneorder
+    + phone
+    - uPhone {topic=confirmorder}
+
+    + [*] cancel [*]
+    - ordCancel Baik kak kita cancel ya, \n
+    ^ Kalau pengen pesan minsu jangan malau-malu hubungin milki ya..{topic=random}
+
+    + (*)
+    - Tolong masukan angka ya kak..
+< topic
+
+> topic confirmorder
+    + finbuy
+    - uBuy {topic=random}
+
+    + cancelorder
+    - ordCancel Baik kaak , pesanan kita cancel ya..{topic=random}
+
+    + [*] cancel [*]
+    - ordCancel Baik kak kita cancel ya, \n
+    ^ Kalau pengen pesan minsu jangan malau-malu hubungin milki ya..{topic=random}
+< topic
+
++ cancelorder
+- ordCancel Baik kaak , pesanan kita cancel ya..

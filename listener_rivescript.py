@@ -36,7 +36,7 @@ if __name__==  "__main__":
     def reply():
         content = request.get_json()
         print "Incoing Message In Rivescript -->> ", content
-        return rs.reply(content['replyToken'], content['ask'])
+        return rs.reply(content['msisdn'], content['ask'])
 
     @app.route('/trigger', methods=['POST'])
     def trigger():
@@ -94,4 +94,4 @@ if __name__==  "__main__":
 
 
     print "starting gevent wsgi..."
-    pywsgi.WSGIServer(('', 3001), app).serve_forever()
+    pywsgi.WSGIServer(('', 3020), app).serve_forever()

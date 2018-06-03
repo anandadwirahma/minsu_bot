@@ -1,23 +1,16 @@
 from linebot import LineBotApi
 from linebot.exceptions import LineBotApiError
+from linebot.models import BaseSize
 from linebot.models import ImageSendMessage
+from linebot.models import ImagemapArea
+from linebot.models import ImagemapSendMessage
 from linebot.models import LocationSendMessage
+from linebot.models import MessageImagemapAction
 from linebot.models import StickerSendMessage
 from linebot.models import TextSendMessage
 from linebot.models import VideoSendMessage
 
-from linebot.models import BaseSize
-from linebot.models import ImagemapArea
-from linebot.models import ImagemapSendMessage
-from linebot.models import MessageImagemapAction
-from linebot.models import URIImagemapAction
-
-import line_plugin.template_imagemap
-import line_plugin.template_carousel
-import line_plugin.template_confirm
-import line_plugin.template_img_buttons
-
-import json
+import template_carousel,template_confirm
 
 
 class Bot(object):
@@ -99,6 +92,7 @@ class Bot(object):
         """
 
         payloads = []
+        user_ids = user_ids.split(",")
         messages = text.split("<br>")
         for msg in messages:
             if not msg :
@@ -112,8 +106,8 @@ class Bot(object):
             end_idx = 5
             remaining_payloads = len(payloads)
             while remaining_payloads > 0:
-                #self.__send_multicast(user_ids, payloads[start_idx:end_idx])
-                self.__send_reply_message(user_ids, payloads[start_idx:end_idx])
+                self.__send_multicast(user_ids, payloads[start_idx:end_idx])
+                #self.__send_reply_message(user_ids, payloads[start_idx:end_idx])
                 start_idx = start_idx + looper
                 end_idx = end_idx + looper
                 remaining_payloads = remaining_payloads - looper
